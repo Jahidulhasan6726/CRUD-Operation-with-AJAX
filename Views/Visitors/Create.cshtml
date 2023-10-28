@@ -1,0 +1,106 @@
+﻿@model CRUD_Operation_With_AJAX.Models.Visitor
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row ms-2">
+    <div class="col">
+        <h3> Add New Visitor </h3>
+        @* <div id="panel"></div> *@
+        <p id="panel"></p>
+        <form asp-action="Create"
+              asp-controller="Visitors"
+              id="frmCreate"
+              data-ajax-method="POST"
+              data-ajax="true"
+              data-ajax-mode="replace"
+              data-ajax-update="#panel"
+              data-ajax-success="success">
+
+
+            <div class="row mb-2">
+                <label asp-for="Name" class="col-form-label col-2">
+                    @Html.DisplayNameFor(x=>x.Name)
+                </label>
+                <div class="col-5">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <label asp-for="City" class="col-form-label col-2">
+                    @Html.DisplayNameFor(x=>x.City)
+                </label>
+                <div class="col-5">
+                    <select asp-for="City" class="form-select">
+                        <option>Cumilla</option>
+                        <option>Dhaka</option>
+                        <option>Jessore</option>
+                        <option value="" selected>Select</option>
+                    </select>
+
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <label asp-for="Phone" class="col-form-label col-2">
+                    @Html.DisplayNameFor(x=>x.Phone)
+                </label>
+                <div class="col-5">
+                    <input asp-for="Phone" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <label asp-for="VisitDate" class="col-form-label col-2">
+                    @Html.DisplayNameFor(x=>x.VisitDate)
+                </label>
+                <div class="col-5">
+                    <input asp-for="VisitDate" class="form-control" ,type="date" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="VisitDate" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <div class="col-10 offset-2">
+                    <button class="btn btn-primary" type="submit"> <i class="fa fa-save"></i> Save</button>
+                </div>
+
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" asp-controller="Visitors" class="btn btn-outline-primary ms-2">Back To List</a>
+</div>
+@section scripts{
+
+    <script src="~/lib/validation/jquery.validate.js"></script>
+    <script src="~/lib/ajax/dist/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        function success() {
+            $("#frmCreate").trigger("reset");
+
+        }
+    </script>
+
+}

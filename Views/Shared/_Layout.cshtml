@@ -1,0 +1,51 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <environment>
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/lib/font-awsome/css/font-awesome.css" rel="stylesheet" />
+        <script src="~/lib/jquery/jquery.js"></script>
+
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-info text-light">
+        <div class="container">
+            <a class="navbar-brand">CRUD with AJAX </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home","Index","Home",new{},new{@class="nav-link"})
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Visitors","Index","Visitors",new{},new{@class="nav-link"})
+                   
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer>
+        <hr />
+        <p class="text-center fw-bold"> www.&copy; Jahidul.com</p>
+    </footer>
+
+    <environment>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+
+
+    </environment>
+    @RenderSection("scripts",false)
+    @RenderSection("styles",false)
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CRUD_Operation_With_AJAX.Models.Visitor>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="ms-2">Visitor List</h2>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-primary mb-2 me-2" asp-action="Create" asp-controller="Visitors"><i class="fa fa-plus-circle"></i>Add New</a>
+        </div>
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Name)</th>
+                    <th>@Html.DisplayNameFor(x => x.City)</th>
+                    <th>@Html.DisplayNameFor(x => x.Phone)</th>
+                    <th>@Html.DisplayNameFor(x => x.VisitDate)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.Name)</td>
+                        <td>@Html.DisplayFor(x => item.City)</td>
+                        <td>@Html.DisplayFor(x => item.Phone)</td>
+                        <td>@Html.DisplayFor(x => item.VisitDate)</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Visitors" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="fa fa-edit"></i></a>||
+                            <a asp-action="Delete" asp-controller="Visitors" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
